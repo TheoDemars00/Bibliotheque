@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     colors: {
       'background1': '#EFF5F5',
-      'grey1': '#D6E4E5',
+      'grey1': '#827D83',
       'grey2': '#497174',
-      'orange1': '#EB6440',
-      'green1' : '#386641',
+      'pink1' : '#e73093',
+      'purple1' : '#9818Af',
       'white': '#FFFFFF',
       'blue': '#188FA7',
     },
