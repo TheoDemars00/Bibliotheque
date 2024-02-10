@@ -3,7 +3,7 @@
         "id" : 1,
         "titre" : "AS SAINT-ÉTIENNE 90 ANS DE LÉGENDE",
         "auteur" : "Denis Chaumier",
-        "année de publication" : "2023",
+        "année_de_publication" : "2023",
         "sport" : "football",
         "prix" : 35.00
     },
@@ -11,7 +11,7 @@
         "id" : 2,
         "titre" : "Micheal Jordan : The Life",
         "auteur" : "Roland Lazenby",
-        "année de publication" : "2015",
+        "année_de_publication" : "2015",
         "sport" : "basketball",
         "prix" : 25.90
     }
