@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Book } from '../models/book';
 
 @Injectable({
@@ -9,7 +9,14 @@ import { Book } from '../models/book';
 export class BooksService {
   constructor(private http: HttpClient) { }
 
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('../assets/books.json');
-  } 
+  url = 'http://localhost:4200/assets/books.json';
+
+  // getBooks(): Observable<Book[]> {
+  //   return this.http.get<Book[]>('../assets/books');
+  // } 
+
+  async getBooks(): Promise<Book[]> {
+    const data = await fetch(this.url);
+    return (await data.json()) ?? [];
+  }
 }

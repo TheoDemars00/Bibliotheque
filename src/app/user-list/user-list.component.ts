@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ClientService } from '../services/client.service';
 import { Client } from '../models/client';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit{
 
-  clientData: Client[] = []; // Initialisez la propriété avec un tableau vide
+  clientList: Client[] = []; // Initialisez la propriété avec un tableau vide
+  clientService: ClientService = inject(ClientService);
   selectedClient: any; // Propriété pour stocker le produit sélectionné
-  constructor(private ClientService: ClientService) { }
+  
+  constructor(/*private BooksService: BooksService*/) {
+    this.clientService.getClients().then((clientList:Client[])=>{
+      this.clientList = clientList;
+    });
+  }
 
   ngOnInit(): void {
-      this.ClientService.getClients().subscribe((data: Client[]) => {
-        this.clientData = data;
-      }); 
   }
+
   showDetails(client: Client) {
     this.selectedClient = client; // Stockez le produit sélectionné
   }

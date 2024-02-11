@@ -1,7 +1,30 @@
-<div *ngFor="let l of loan">
-    <h2>{{ l.nom }}</h2>
-    <p>{{ l.livre_emprunte }}</p>
-    <p>{{ l.date_emprunt }}</p>
-    <p>{{ l.a_rendre_avant }}</p>
-</div>
+<div class="flex justify-center gap-x-10">
+    <div class="w-2/5 m-10 border border-grey-1 bg-white rounded-lg p-5" *ngIf="loanList">
+        <h1 class="text-blue text-xl pb-4">Liste des emprunts:</h1>
+        <ul class="flex flex-col gap-5">
+            <li class="flex gap-2 items-center" *ngFor="let loan of loanList">
+            Emprunt n°{{ loan.id }}, par {{ loan.nom }}
+            <svg class="w-6 cursor-pointer transition-transform transform hover:scale-110" (click)="showDetails(loan)"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>eye-outline</title>
+                <path
+                d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+            </svg>
+            </li>
+        </ul>
+    </div>
 
+    <div class="w-3/5 m-10 border bg-white border-grey-2 rounded-lg p-5">
+        <h1 class="text-purple1 text-xl pb-4">Détails de l'emprunt sélectionnée</h1>
+        <div *ngIf="selectedLoan" class="flex flex-col gap-3">
+            <p> <strong>Numéro de l'emprunt:</strong> {{ selectedLoan.id }}</p>
+            <p> <strong>Client:</strong> {{ selectedLoan.nom }}</p>
+            <p> <strong>Livre emprunté:</strong> {{ selectedLoan.livre_emprunte }}</p>
+            <p> <strong>Date de l'emprunt:</strong> {{ selectedLoan.date_emprunt }}</p>
+            <p> <strong>Date du retour:</strong> {{ selectedLoan.a_rendre_avant }}</p>
+        </div>
+        <div *ngIf="!selectedLoan">
+            Aucune commande selectionnée
+        </div>
+    </div>
+</div>

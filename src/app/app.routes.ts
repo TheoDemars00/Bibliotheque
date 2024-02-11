@@ -7,13 +7,13 @@ import {OrdersListComponent} from './orders-list/orders-list.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
-    {path: 'book-list', component: BooksListComponent},
-    {path: 'user-list', component: UserListComponent},
-    {path: 'orders-list', component: OrdersListComponent}
+    {path: 'books', component: BooksListComponent},
+    {path: 'users', component: UserListComponent},
+    {path: 'orders', component: OrdersListComponent}
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+})
+export class AppRoutingModule { }
