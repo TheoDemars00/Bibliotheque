@@ -7,9 +7,13 @@ import { Client } from '../models/client';
   providedIn: 'root'
 })
 export class ClientService {
-  constructor(private http: HttpClient) { }
 
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>('../assets/clients.json');
-  } 
+  constructor(private http: HttpClient) { }
+  
+  url = 'http://localhost:4200/assets/clients.json';
+
+  async getClients(): Promise<Client[]> {
+    const data = await fetch(this.url);
+    return (await data.json()) ?? [];
+  }
 }

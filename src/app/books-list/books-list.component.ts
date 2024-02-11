@@ -1,25 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { BooksService } from '../services/books.service';
 import { Book } from '../models/book';
+import { NgFor } from '@angular/common'
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-books-list',
   standalone: true,
-  imports: [],
+  imports: [NgFor, HttpClientModule],
   templateUrl: './books-list.component.html',
   styleUrl: './books-list.component.css'
 })
 export class BooksListComponent implements OnInit{
 
-  bookData: Book[] = []; // Initialisez la propriété avec un tableau vide
+  bookList: Book[] = [];
+  bookService: BooksService = inject(BooksService); // Initialisez la propriété avec un tableau vide
   selectedBook: any; // Propriété pour stocker le produit sélectionné
-  constructor(private BooksService: BooksService) { }
+
+  constructor(/*private BooksService: BooksService*/) {
+    this.bookService.getBooks().then((bookList:Book[])=>{
+      this.bookList = bookList;
+    });
+  }
 
   ngOnInit(): void {
-      this.BooksService.getBooks().subscribe((data: Book[]) => {
-        this.bookData = data;
-      }); 
   }
+
   showDetails(book: Book) {
     this.selectedBook = book; // Stockez le produit sélectionné
   }
