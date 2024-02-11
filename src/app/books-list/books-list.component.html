@@ -1,1 +1,8 @@
-<p>books-list works!</p>
+<div *ngFor="let b of book">
+    <h2>{{ b.titre }}</h2>
+    <p>{{ b.auteur }}</p>
+    <p>{{ b.annee_de_publication }}</p>
+    <p>{{ b.sport }}</p>
+    <p>{{ b.prix }}</p>
+</div>
+
