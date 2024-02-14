@@ -1,8 +1,31 @@
-<div *ngFor="let b of bookList">
-    <h2>{{ b.titre }}</h2>
-    <p>{{ b.auteur }}</p>
-    <p>{{ b.annee_de_publication }}</p>
-    <p>{{ b.sport }}</p>
-    <p>{{ b.prix }}</p>
-</div>
+<div class="flex justify-center gap-x-10">
+    <div class="w-2/5 m-10 border border-grey-1 bg-white rounded-lg p-5" *ngIf="bookList">
+        <h1 class="text-blue text-xl pb-4">Liste des livres:</h1>
+        <ul class="flex flex-col gap-5">
+            <li class="flex gap-2 items-center" *ngFor="let book of bookList">
+            Livre n°{{ book.id }} ({{book.titre}})
+            <svg class="w-6 cursor-pointer transition-transform transform hover:scale-110" (click)="showDetails(book)"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>eye-outline</title>
+                <path
+                d="M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C21.27,16.39 17,19.5 12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5M3.18,12C4.83,15.36 8.24,17.5 12,17.5C15.76,17.5 19.17,15.36 20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12Z" />
+            </svg>
+            </li>
+        </ul>
+    </div>
 
+    <div class="w-3/5 m-10 border bg-white border-grey-2 rounded-lg p-5">
+        <h1 class="text-purple1 text-xl pb-4">Informations sur le livre</h1>
+        <div *ngIf="selectedBook" class="flex flex-col gap-3">
+            <p> <strong>Numéro du livre:</strong> {{ selectedBook.id }}</p>
+            <p> <strong>Titre:</strong> {{ selectedBook.titre }}</p>
+            <p> <strong>Auteur:</strong> {{ selectedBook.auteur }}</p>
+            <p> <strong>Année de publication:</strong> {{ selectedBook.annee_de_publication }}</p>
+            <p> <strong>Sport concerné:</strong> {{ selectedBook.sport }}</p>
+            <p> <strong>Prix:</strong> {{ selectedBook.prix }}</p>
+        </div>
+        <div *ngIf="!selectedBook">
+            Aucun livre selectionné
+        </div>
+    </div>
+</div>
