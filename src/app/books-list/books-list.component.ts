@@ -1,13 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { BooksService } from '../services/books.service';
 import { Book } from '../models/book';
-import { NgFor } from '@angular/common'
+import { NgFor, NgIf } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-books-list',
   standalone: true,
-  imports: [NgFor, HttpClientModule],
+  imports: [NgFor, HttpClientModule, NgIf],
   templateUrl: './books-list.component.html',
   styleUrl: './books-list.component.css'
 })

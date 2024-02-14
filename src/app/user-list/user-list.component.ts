@@ -1,12 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ClientService } from '../services/client.service';
 import { Client } from '../models/client';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
